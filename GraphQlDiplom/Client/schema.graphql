@@ -1,0 +1,299 @@
+﻿schema {
+  query: Queries
+  mutation: MutationsAddOrder
+  subscription: Subscriptions
+}
+
+type Queries {
+  readClients(where: ClientFilterInput order: [ClientSortInput!]): [Client]
+  readItems(where: ItemFilterInput order: [ItemSortInput!]): [Item]
+  readCitemsStatus(where: ItemStatusFilterInput order: [ItemStatusSortInput!]): [ItemStatus]
+  readOrder(where: OrderFilterInput order: [OrderSortInput!]): [Order]
+  readProducts(where: ProductFilterInput order: [ProductSortInput!]): [Product]
+  readStates(where: StateFilterInput order: [StateSortInput!]): [State]
+  readOrderByCleint(clientId: [Int!] where: OrderFilterInput order: [OrderSortInput!]): [Order]
+  readList(orderId: Int!): [Item]
+}
+
+type MutationsAddOrder {
+  addorder(clientId: Int! stateId: Int! creationDate: DateTime! phoneNumber: Int! where: OrderFilterInput order: [OrderSortInput!]): Order
+  addItem(orderId: Int! item: ItemInput): Order
+  deleteorder(order: OrderInput orderId: Int!): Boolean!
+  createOrUpdate(client: ClientInput): Client
+}
+
+type Subscriptions {
+  onClientChanged: Client
+}
+
+input ClientFilterInput {
+  and: [ClientFilterInput!]
+  or: [ClientFilterInput!]
+  isBlocked: BooleanOperationFilterInput
+  deposit: ComparableInt32OperationFilterInput
+  bonus: ComparableInt32OperationFilterInput
+  phoneNumber: ComparableInt32OperationFilterInput
+  email: StringOperationFilterInput
+  firstName: StringOperationFilterInput
+  lastName: StringOperationFilterInput
+}
+
+input ClientSortInput {
+  isBlocked: SortEnumType
+  deposit: SortEnumType
+  bonus: SortEnumType
+  phoneNumber: SortEnumType
+  email: SortEnumType
+  firstName: SortEnumType
+  lastName: SortEnumType
+}
+
+input ItemFilterInput {
+  and: [ItemFilterInput!]
+  or: [ItemFilterInput!]
+  ownerId: ComparableInt32OperationFilterInput
+  eventDate: ComparableDateTimeOperationFilterInput
+  count: ComparableInt32OperationFilterInput
+  productId: ComparableInt32OperationFilterInput
+  product: ProductFilterInput
+  orderId: ComparableInt32OperationFilterInput
+}
+
+input ItemSortInput {
+  ownerId: SortEnumType
+  eventDate: SortEnumType
+  count: SortEnumType
+  productId: SortEnumType
+  product: ProductSortInput
+  orderId: SortEnumType
+}
+
+input ItemStatusFilterInput {
+  and: [ItemStatusFilterInput!]
+  or: [ItemStatusFilterInput!]
+  itemId: ComparableInt32OperationFilterInput
+  isValid: BooleanOperationFilterInput
+  isActivated: BooleanOperationFilterInput
+}
+
+input ItemStatusSortInput {
+  itemId: SortEnumType
+  isValid: SortEnumType
+  isActivated: SortEnumType
+}
+
+input OrderFilterInput {
+  and: [OrderFilterInput!]
+  or: [OrderFilterInput!]
+  orderId: ComparableInt32OperationFilterInput
+  clientId: ComparableInt32OperationFilterInput
+  client: ClientFilterInput
+  stateId: ComparableInt32OperationFilterInput
+  creationDate: ComparableDateTimeOperationFilterInput
+  phoneNumber: ComparableInt32OperationFilterInput
+  items: ListFilterInputTypeOfItemFilterInput
+}
+
+input OrderSortInput {
+  orderId: SortEnumType
+  clientId: SortEnumType
+  client: ClientSortInput
+  stateId: SortEnumType
+  creationDate: SortEnumType
+  phoneNumber: SortEnumType
+}
+
+input ProductFilterInput {
+  and: [ProductFilterInput!]
+  or: [ProductFilterInput!]
+  productId: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+  price: ComparableDoubleOperationFilterInput
+  from: ComparableDateTimeOperationFilterInput
+  to: ComparableDateTimeOperationFilterInput
+}
+
+input ProductSortInput {
+  productId: SortEnumType
+  name: SortEnumType
+  price: SortEnumType
+  from: SortEnumType
+  to: SortEnumType
+}
+
+input StateFilterInput {
+  and: [StateFilterInput!]
+  or: [StateFilterInput!]
+  stateId: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+}
+
+input StateSortInput {
+  stateId: SortEnumType
+  name: SortEnumType
+}
+
+input BooleanOperationFilterInput {
+  eq: Boolean
+  neq: Boolean
+}
+
+input ComparableInt32OperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int!]
+  nin: [Int!]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+input ComparableDateTimeOperationFilterInput {
+  eq: DateTime
+  neq: DateTime
+  in: [DateTime!]
+  nin: [DateTime!]
+  gt: DateTime
+  ngt: DateTime
+  gte: DateTime
+  ngte: DateTime
+  lt: DateTime
+  nlt: DateTime
+  lte: DateTime
+  nlte: DateTime
+}
+
+input ListFilterInputTypeOfItemFilterInput {
+  all: ItemFilterInput
+  none: ItemFilterInput
+  some: ItemFilterInput
+  any: Boolean
+}
+
+input ComparableDoubleOperationFilterInput {
+  eq: Float
+  neq: Float
+  in: [Float!]
+  nin: [Float!]
+  gt: Float
+  ngt: Float
+  gte: Float
+  ngte: Float
+  lt: Float
+  nlt: Float
+  lte: Float
+  nlte: Float
+}
+
+type ItemStatus {
+  itemId: Int!
+  isValid: Boolean!
+  isActivated: Boolean!
+}
+
+type Item {
+  ownerId: Int!
+  eventDate: DateTime!
+  count: Int!
+  productId: Int!
+  product: Product
+  orderId: Int!
+}
+
+type Client {
+  isBlocked: Boolean!
+  deposit: Int!
+  bonus: Int!
+  phoneNumber: Int!
+  email: String
+  firstName: String
+  lastName: String
+}
+
+type Order {
+  orderId: Int!
+  clientId: Int!
+  client: Client
+  stateId: Int!
+  creationDate: DateTime!
+  phoneNumber: Int!
+  items: [Item]
+}
+
+type Product {
+  productId: Int!
+  name: String
+  price: Float!
+  from: DateTime!
+  to: DateTime!
+}
+
+type State {
+  stateId: Int!
+  name: String
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+input ItemInput {
+  ownerId: Int!
+  eventDate: DateTime!
+  count: Int!
+  productId: Int!
+  product: ProductInput
+  orderId: Int!
+}
+
+input OrderInput {
+  orderId: Int!
+  clientId: Int!
+  client: ClientInput
+  stateId: Int!
+  creationDate: DateTime!
+  phoneNumber: Int!
+  items: [ItemInput]
+}
+
+input ClientInput {
+  isBlocked: Boolean!
+  deposit: Int!
+  bonus: Int!
+  phoneNumber: Int!
+  email: String
+  firstName: String
+  lastName: String
+}
+
+input ProductInput {
+  productId: Int!
+  name: String
+  price: Float!
+  from: DateTime!
+  to: DateTime!
+}

@@ -36,6 +36,7 @@ namespace GraphQlDiplom
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting()
+
                 .AddSubscriptionType<Subscriptions>()
                 .AddInMemorySubscriptions();
         }
