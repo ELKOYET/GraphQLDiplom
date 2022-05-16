@@ -11,7 +11,6 @@ namespace GraphQlDiplom.GraphQL
 {
     public class Queries
     {
-
         [UseProjection]
         [UseFiltering()]
         [UseSorting()]
@@ -21,6 +20,7 @@ namespace GraphQlDiplom.GraphQL
         [UseProjection]
         [UseFiltering()]
         [UseSorting()]
+        
         public IQueryable<Item> ReadItems([Service] ApplicationContext ctx) => ctx.Items;
 
         [UseProjection]
@@ -41,7 +41,7 @@ namespace GraphQlDiplom.GraphQL
         [UseProjection]
         [UseFiltering()]
         [UseSorting()]
-        public IQueryable<State> ReadStates([Service] ApplicationContext ctx) => ctx.States;
+        public IQueryable<GraphQlDiplom.Models.State> ReadStates([Service] ApplicationContext ctx) => ctx.States;
 
 
 

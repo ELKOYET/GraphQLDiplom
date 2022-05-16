@@ -1,0 +1,8 @@
+﻿query GetAllClients
+{   readClients {
+      firstName
+      lastName
+      phoneNumber
+      email
+    }
+}

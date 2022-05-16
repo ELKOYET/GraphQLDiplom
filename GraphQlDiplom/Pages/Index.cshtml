@@ -1,10 +1,32 @@
-﻿@page
+﻿@page "первая"
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@using GraphQlDiplom
+@using GraphQlDiplom.Models
+@using GraphQlDiplom.GraphQL
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Номер заказа</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Почта</th>
+                <th scope="col">Телефон</th>
+            </tr>
+           
+        </thead>
+        @*<tbody>
+            @foreach (var item in Model.GetAllClients)
+            {
+                <tr>
+                    <th scope="row">@item.ClientId</th>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>            
+                </tr>
+            }
+        </tbody>*@
+    </table>
 </div>

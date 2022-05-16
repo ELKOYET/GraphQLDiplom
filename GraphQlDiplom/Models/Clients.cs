@@ -10,7 +10,7 @@ namespace GraphQlDiplom.Models
     public class Client
     {
         [Key]
-        [GraphQLIgnore]
+       //[GraphQLIgnore]
         public int ClientId { get; set; }
         public bool IsBlocked { get; set; }
         public int Deposit { get; set; }
