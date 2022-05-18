@@ -1,4 +1,5 @@
-﻿@page "первая"
+﻿@page
+
 @model IndexModel
 @using GraphQlDiplom
 @using GraphQlDiplom.Models
@@ -8,25 +9,95 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Номер заказа</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Почта</th>
-                <th scope="col">Телефон</th>
+                @*<th scope="col">Номер клиента</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Почта</th>
+                    <th scope="col"></th>*@
+               
+                <td><input type="checkbox" id="firstname" value="Имя" checked />Имя</td>
+                <td><input type="checkbox" id="lastname" value="Фамилия" checked />  Фамилия</td>
+                <td><input type="checkbox" id="email" value="Почта" checked/>  Почта</td>
+                <td><input type="checkbox" id="phone" value="Номер телефона" checked />  Номер телефона </td>
+                <td><input type="checkbox" id="balance" value="Номер телефона" checked />  Баланс </td>
+
+
+
+
+
             </tr>
-           
+
         </thead>
-        @*<tbody>
-            @foreach (var item in Model.GetAllClients)
-            {
-                <tr>
-                    <th scope="row">@item.ClientId</th>
-                    <td>@item.FirstName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.Email</td>
-                    <td>@item.PhoneNumber</td>            
-                </tr>
-            }
-        </tbody>*@
+
+        <tbody id="grapQLData">
+            @*foreach (var item in Model.GetAllClients)
+                {
+                    <tr>
+                        <th scope="row">@item.ClientId</th>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                    </tr>
+                }*@
+        </tbody>
     </table>
+
+    <button id="buttonGraphQL">Отправить запрос</button>
+    <label id="requestString"> </label>
 </div>
+<script>
+    $(document).ready(function () {
+
+
+        function graphQLLoader(param) {
+            $.ajax({
+                url: "/graphql",
+                contentType: "application/json",
+                type: 'POST',
+                data: JSON.stringify({
+                    query: `query {  readClients {\r\n      ` + param + `      \r\n      }\r\n}`
+                }),
+                success: function (result) {
+                    console.log(result.data.readClients);
+                    $('#grapQLData').empty();
+
+                    $.each(result.data.readClients, function (key, value) {
+                        $('#grapQLData').append('<tr><td>' + (value.firstName ?? '') +
+                                                '</td><td>' + (value.lastName ?? '') +
+                                                '</td><td>' + (value.email ?? '') +
+                                                '</td><td>' + (value.phoneNumber ?? '') +
+                                                '</td><td>' + (value.deposit ?? '') +
+                                                '</td ></tr>');
+                    });
+
+                    document.getElementById('requestString').textContent ='Запрос:{' +param+ '}';
+                }
+            });
+        }
+
+        graphQLLoader('firstName\r\n       lastName\r\n    email\r\n         phoneNumber\r\n          deposit\r\n ');
+
+        $('#buttonGraphQL').on('click', function () {
+            let param = '';
+            if (document.getElementById('firstname').checked) {
+                param += ' firstName\r\n'
+            }
+            if (document.getElementById('lastname').checked) {
+                param += ' lastName\r\n'
+            }
+            if (document.getElementById('email').checked) {
+                param += ' email\r\n'
+            }
+            if (document.getElementById('phone').checked) {
+                param += ' phoneNumber\r\n '
+            }
+            if (document.getElementById('balance').checked) {
+                param += ' deposit\r\n'
+            }
+            graphQLLoader(param);
+        })
+
+
+    });
+</script>

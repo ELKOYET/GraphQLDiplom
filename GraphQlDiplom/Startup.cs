@@ -40,6 +40,8 @@ namespace GraphQlDiplom
                 .AddSubscriptionType<Subscriptions>()
                 .AddInMemorySubscriptions();
             services.AddGraphqlClient().ConfigureHttpClient(client => client.BaseAddress = new Uri("https://localhost:44308/graphql/"));
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

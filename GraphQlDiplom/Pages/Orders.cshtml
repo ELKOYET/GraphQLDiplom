@@ -1,0 +1,41 @@
+﻿@page
+@model GraphQlDiplom.Pages.OrdersModel
+@using GraphQlDiplom
+@using GraphQlDiplom.Models
+@using GraphQlDiplom.GraphQL
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Номер заказа</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Телефон в заказе</th>
+                <th scope="col">Тип продукта</th>
+                <th scope="col">Дата формирования заказа</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.GetAllOrders)
+            { int i = 0;
+            <tr>
+                <th scope="row">@item.OrderId</th>
+                <td>@item.Client.FirstName</td>
+                <td>@item.Client.LastName</td>
+                <td>@item.Client.PhoneNumber</td>
+                <td>@foreach (var it in Model.GetAllOrders)
+                    {
+                        @it.Items[i].Product.Name
+                       
+                    }</td>
+                <td>@item.CreationDate</td>
+            </tr>
+                i++;
+            }
+
+        </tbody>
+    </table>
+</div>

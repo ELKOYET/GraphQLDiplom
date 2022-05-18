@@ -77,12 +77,13 @@ namespace GraphQlDiplom
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
     public partial class GetAllClients_ReadClients_Client : global::System.IEquatable<GetAllClients_ReadClients_Client>, IGetAllClients_ReadClients_Client
     {
-        public GetAllClients_ReadClients_Client(global::System.String? firstName, global::System.String? lastName, global::System.Int32 phoneNumber, global::System.String? email)
+        public GetAllClients_ReadClients_Client(global::System.String? firstName, global::System.String? lastName, global::System.Int32 phoneNumber, global::System.String? email, global::System.Int32 deposit)
         {
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+            Deposit = deposit;
         }
 
         public global::System.String? FirstName { get; }
@@ -92,6 +93,8 @@ namespace GraphQlDiplom
         public global::System.Int32 PhoneNumber { get; }
 
         public global::System.String? Email { get; }
+
+        public global::System.Int32 Deposit { get; }
 
         public virtual global::System.Boolean Equals(GetAllClients_ReadClients_Client? other)
         {
@@ -110,7 +113,7 @@ namespace GraphQlDiplom
                 return false;
             }
 
-            return (((FirstName is null && other.FirstName is null) || FirstName != null && FirstName.Equals(other.FirstName))) && ((LastName is null && other.LastName is null) || LastName != null && LastName.Equals(other.LastName)) && PhoneNumber == other.PhoneNumber && ((Email is null && other.Email is null) || Email != null && Email.Equals(other.Email));
+            return (((FirstName is null && other.FirstName is null) || FirstName != null && FirstName.Equals(other.FirstName))) && ((LastName is null && other.LastName is null) || LastName != null && LastName.Equals(other.LastName)) && PhoneNumber == other.PhoneNumber && ((Email is null && other.Email is null) || Email != null && Email.Equals(other.Email)) && Deposit == other.Deposit;
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -154,6 +157,7 @@ namespace GraphQlDiplom
                     hash ^= 397 * Email.GetHashCode();
                 }
 
+                hash ^= 397 * Deposit.GetHashCode();
                 return hash;
             }
         }
@@ -175,10 +179,437 @@ namespace GraphQlDiplom
         public global::System.Int32 PhoneNumber { get; }
 
         public global::System.String? Email { get; }
+
+        public global::System.Int32 Deposit { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
     public interface IGetAllClients_ReadClients_Client : IGetAllClients_ReadClients
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersResult : global::System.IEquatable<GetAllOrdersResult>, IGetAllOrdersResult
+    {
+        public GetAllOrdersResult(global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder?>? readOrder)
+        {
+            ReadOrder = readOrder;
+        }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder?>? ReadOrder { get; }
+
+        public virtual global::System.Boolean Equals(GetAllOrdersResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(ReadOrder, other.ReadOrder));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetAllOrdersResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (ReadOrder != null)
+                {
+                    foreach (var ReadOrder_elm in ReadOrder)
+                    {
+                        if (ReadOrder_elm != null)
+                        {
+                            hash ^= 397 * ReadOrder_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrders_ReadOrder_Order : global::System.IEquatable<GetAllOrders_ReadOrder_Order>, IGetAllOrders_ReadOrder_Order
+    {
+        public GetAllOrders_ReadOrder_Order(global::System.Int32 orderId, global::GraphQlDiplom.IGetAllOrders_ReadOrder_Client? client, global::System.Int32 phoneNumber, global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items?>? items)
+        {
+            OrderId = orderId;
+            Client = client;
+            PhoneNumber = phoneNumber;
+            Items = items;
+        }
+
+        public global::System.Int32 OrderId { get; }
+
+        public global::GraphQlDiplom.IGetAllOrders_ReadOrder_Client? Client { get; }
+
+        public global::System.Int32 PhoneNumber { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items?>? Items { get; }
+
+        public virtual global::System.Boolean Equals(GetAllOrders_ReadOrder_Order? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (OrderId == other.OrderId) && ((Client is null && other.Client is null) || Client != null && Client.Equals(other.Client)) && PhoneNumber == other.PhoneNumber && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Items, other.Items);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetAllOrders_ReadOrder_Order)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * OrderId.GetHashCode();
+                if (Client != null)
+                {
+                    hash ^= 397 * Client.GetHashCode();
+                }
+
+                hash ^= 397 * PhoneNumber.GetHashCode();
+                if (Items != null)
+                {
+                    foreach (var Items_elm in Items)
+                    {
+                        if (Items_elm != null)
+                        {
+                            hash ^= 397 * Items_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrders_ReadOrder_Client_Client : global::System.IEquatable<GetAllOrders_ReadOrder_Client_Client>, IGetAllOrders_ReadOrder_Client_Client
+    {
+        public GetAllOrders_ReadOrder_Client_Client(global::System.String? firstName, global::System.String? lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
+        public global::System.String? FirstName { get; }
+
+        public global::System.String? LastName { get; }
+
+        public virtual global::System.Boolean Equals(GetAllOrders_ReadOrder_Client_Client? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((FirstName is null && other.FirstName is null) || FirstName != null && FirstName.Equals(other.FirstName))) && ((LastName is null && other.LastName is null) || LastName != null && LastName.Equals(other.LastName));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetAllOrders_ReadOrder_Client_Client)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (FirstName != null)
+                {
+                    hash ^= 397 * FirstName.GetHashCode();
+                }
+
+                if (LastName != null)
+                {
+                    hash ^= 397 * LastName.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrders_ReadOrder_Items_Item : global::System.IEquatable<GetAllOrders_ReadOrder_Items_Item>, IGetAllOrders_ReadOrder_Items_Item
+    {
+        public GetAllOrders_ReadOrder_Items_Item(global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items_Product? product)
+        {
+            Product = product;
+        }
+
+        public global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items_Product? Product { get; }
+
+        public virtual global::System.Boolean Equals(GetAllOrders_ReadOrder_Items_Item? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Product is null && other.Product is null) || Product != null && Product.Equals(other.Product)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetAllOrders_ReadOrder_Items_Item)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Product != null)
+                {
+                    hash ^= 397 * Product.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrders_ReadOrder_Items_Product_Product : global::System.IEquatable<GetAllOrders_ReadOrder_Items_Product_Product>, IGetAllOrders_ReadOrder_Items_Product_Product
+    {
+        public GetAllOrders_ReadOrder_Items_Product_Product(global::System.DateTimeOffset @from, global::System.String? name)
+        {
+            From = @from;
+            Name = name;
+        }
+
+        public global::System.DateTimeOffset From { get; }
+
+        public global::System.String? Name { get; }
+
+        public virtual global::System.Boolean Equals(GetAllOrders_ReadOrder_Items_Product_Product? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (From.Equals(other.From)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetAllOrders_ReadOrder_Items_Product_Product)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * From.GetHashCode();
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrdersResult
+    {
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder?>? ReadOrder { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder
+    {
+        public global::System.Int32 OrderId { get; }
+
+        public global::GraphQlDiplom.IGetAllOrders_ReadOrder_Client? Client { get; }
+
+        public global::System.Int32 PhoneNumber { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items?>? Items { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Order : IGetAllOrders_ReadOrder
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Client
+    {
+        public global::System.String? FirstName { get; }
+
+        public global::System.String? LastName { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Client_Client : IGetAllOrders_ReadOrder_Client
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Items
+    {
+        public global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items_Product? Product { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Items_Item : IGetAllOrders_ReadOrder_Items
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Items_Product
+    {
+        public global::System.DateTimeOffset From { get; }
+
+        public global::System.String? Name { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrders_ReadOrder_Items_Product_Product : IGetAllOrders_ReadOrder_Items_Product
     {
     }
 
@@ -192,6 +623,7 @@ namespace GraphQlDiplom
     ///     lastName
     ///     phoneNumber
     ///     email
+    ///     deposit
     ///   }
     /// }
     /// </code>
@@ -205,8 +637,8 @@ namespace GraphQlDiplom
 
         public static GetAllClientsQueryDocument Instance { get; } = new GetAllClientsQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x72, 0x65, 0x61, 0x64, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "958ade7a9567776235617cda732e4c36");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x72, 0x65, 0x61, 0x64, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x20, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "675d7aac1847f6a9a59a8eb0fced7065");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -227,6 +659,7 @@ namespace GraphQlDiplom
     ///     lastName
     ///     phoneNumber
     ///     email
+    ///     deposit
     ///   }
     /// }
     /// </code>
@@ -279,6 +712,7 @@ namespace GraphQlDiplom
     ///     lastName
     ///     phoneNumber
     ///     email
+    ///     deposit
     ///   }
     /// }
     /// </code>
@@ -291,19 +725,163 @@ namespace GraphQlDiplom
     }
 
     /// <summary>
+    /// Represents the operation service of the GetAllOrders GraphQL operation
+    /// <code>
+    /// query GetAllOrders {
+    ///   readOrder {
+    ///     __typename
+    ///     orderId
+    ///     client {
+    ///       __typename
+    ///       firstName
+    ///       lastName
+    ///     }
+    ///     phoneNumber
+    ///     items {
+    ///       __typename
+    ///       product {
+    ///         __typename
+    ///         from
+    ///         name
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GetAllOrdersQueryDocument()
+        {
+        }
+
+        public static GetAllOrdersQueryDocument Instance { get; } = new GetAllOrdersQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x73, 0x20, 0x7b, 0x20, 0x72, 0x65, 0x61, 0x64, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x49, 0x64, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "7c3dce493e0df9c5680835fc7e2fcc14");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetAllOrders GraphQL operation
+    /// <code>
+    /// query GetAllOrders {
+    ///   readOrder {
+    ///     __typename
+    ///     orderId
+    ///     client {
+    ///       __typename
+    ///       firstName
+    ///       lastName
+    ///     }
+    ///     phoneNumber
+    ///     items {
+    ///       __typename
+    ///       product {
+    ///         __typename
+    ///         from
+    ///         name
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersQuery : global::GraphQlDiplom.IGetAllOrdersQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGetAllOrdersResult> _operationExecutor;
+        public GetAllOrdersQuery(global::StrawberryShake.IOperationExecutor<IGetAllOrdersResult> operationExecutor)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetAllOrdersResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetAllOrdersResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest();
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetAllOrdersResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest();
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest()
+        {
+            return CreateRequest(null);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GetAllOrdersQueryDocument.Instance.Hash.Value, name: "GetAllOrders", document: GetAllOrdersQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest();
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetAllOrders GraphQL operation
+    /// <code>
+    /// query GetAllOrders {
+    ///   readOrder {
+    ///     __typename
+    ///     orderId
+    ///     client {
+    ///       __typename
+    ///       firstName
+    ///       lastName
+    ///     }
+    ///     phoneNumber
+    ///     items {
+    ///       __typename
+    ///       product {
+    ///         __typename
+    ///         from
+    ///         name
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public interface IGetAllOrdersQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetAllOrdersResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetAllOrdersResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the GraphqlClient GraphQL client
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
     public partial class GraphqlClient : global::GraphQlDiplom.IGraphqlClient
     {
         private readonly global::GraphQlDiplom.IGetAllClientsQuery _getAllClients;
-        public GraphqlClient(global::GraphQlDiplom.IGetAllClientsQuery getAllClients)
+        private readonly global::GraphQlDiplom.IGetAllOrdersQuery _getAllOrders;
+        public GraphqlClient(global::GraphQlDiplom.IGetAllClientsQuery getAllClients, global::GraphQlDiplom.IGetAllOrdersQuery getAllOrders)
         {
             _getAllClients = getAllClients ?? throw new global::System.ArgumentNullException(nameof(getAllClients));
+            _getAllOrders = getAllOrders ?? throw new global::System.ArgumentNullException(nameof(getAllOrders));
         }
 
         public static global::System.String ClientName => "GraphqlClient";
         public global::GraphQlDiplom.IGetAllClientsQuery GetAllClients => _getAllClients;
+        public global::GraphQlDiplom.IGetAllOrdersQuery GetAllOrders => _getAllOrders;
     }
 
     /// <summary>
@@ -313,6 +891,8 @@ namespace GraphQlDiplom
     public interface IGraphqlClient
     {
         global::GraphQlDiplom.IGetAllClientsQuery GetAllClients { get; }
+
+        global::GraphQlDiplom.IGetAllOrdersQuery GetAllOrders { get; }
     }
 }
 
@@ -369,7 +949,7 @@ namespace GraphQlDiplom.State
             IGetAllClients_ReadClients returnValue = default !;
             if (data?.__typename.Equals("Client", global::System.StringComparison.Ordinal) ?? false)
             {
-                returnValue = new GetAllClients_ReadClients_Client(data.FirstName, data.LastName, data.PhoneNumber ?? throw new global::System.ArgumentNullException(), data.Email);
+                returnValue = new GetAllClients_ReadClients_Client(data.FirstName, data.LastName, data.PhoneNumber ?? throw new global::System.ArgumentNullException(), data.Email, data.Deposit ?? throw new global::System.ArgumentNullException());
             }
             else
             {
@@ -404,6 +984,171 @@ namespace GraphQlDiplom.State
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
             return new GetAllClientsResultInfo(ReadClients, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQlDiplom.GetAllOrdersResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GetAllOrdersResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQlDiplom.IGetAllOrdersResult);
+        public GetAllOrdersResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GetAllOrdersResultInfo info)
+            {
+                return new GetAllOrdersResult(MapIGetAllOrders_ReadOrderArray(info.ReadOrder, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GetAllOrdersResultInfo expected.");
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder?>? MapIGetAllOrders_ReadOrderArray(global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.OrderData?>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var orders = new global::System.Collections.Generic.List<global::GraphQlDiplom.IGetAllOrders_ReadOrder?>();
+            foreach (global::GraphQlDiplom.State.OrderData? child in list)
+            {
+                orders.Add(MapIGetAllOrders_ReadOrder(child, snapshot));
+            }
+
+            return orders;
+        }
+
+        private global::GraphQlDiplom.IGetAllOrders_ReadOrder? MapIGetAllOrders_ReadOrder(global::GraphQlDiplom.State.OrderData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGetAllOrders_ReadOrder returnValue = default !;
+            if (data?.__typename.Equals("Order", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GetAllOrders_ReadOrder_Order(data.OrderId ?? throw new global::System.ArgumentNullException(), MapIGetAllOrders_ReadOrder_Client(data.Client, snapshot), data.PhoneNumber ?? throw new global::System.ArgumentNullException(), MapIGetAllOrders_ReadOrder_ItemsArray(data.Items, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::GraphQlDiplom.IGetAllOrders_ReadOrder_Client? MapIGetAllOrders_ReadOrder_Client(global::GraphQlDiplom.State.ClientData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGetAllOrders_ReadOrder_Client returnValue = default !;
+            if (data?.__typename.Equals("Client", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GetAllOrders_ReadOrder_Client_Client(data.FirstName, data.LastName);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items?>? MapIGetAllOrders_ReadOrder_ItemsArray(global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.ItemData?>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                return null;
+            }
+
+            var items = new global::System.Collections.Generic.List<global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items?>();
+            foreach (global::GraphQlDiplom.State.ItemData? child in list)
+            {
+                items.Add(MapIGetAllOrders_ReadOrder_Items(child, snapshot));
+            }
+
+            return items;
+        }
+
+        private global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items? MapIGetAllOrders_ReadOrder_Items(global::GraphQlDiplom.State.ItemData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGetAllOrders_ReadOrder_Items returnValue = default !;
+            if (data?.__typename.Equals("Item", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GetAllOrders_ReadOrder_Items_Item(MapIGetAllOrders_ReadOrder_Items_Product(data.Product, snapshot));
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::GraphQlDiplom.IGetAllOrders_ReadOrder_Items_Product? MapIGetAllOrders_ReadOrder_Items_Product(global::GraphQlDiplom.State.ProductData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGetAllOrders_ReadOrder_Items_Product returnValue = default !;
+            if (data?.__typename.Equals("Product", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GetAllOrders_ReadOrder_Items_Product_Product(data.From ?? throw new global::System.ArgumentNullException(), data.Name);
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GetAllOrdersResultInfo(global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.OrderData?>? readOrder, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            ReadOrder = readOrder;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.OrderData?>? ReadOrder { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GetAllOrdersResultInfo(ReadOrder, _entityIds, version);
         }
     }
 
@@ -496,7 +1241,7 @@ namespace GraphQlDiplom.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("Client", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::GraphQlDiplom.State.ClientData(typename, firstName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), lastName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastName")), phoneNumber: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "phoneNumber")), email: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "email")));
+                return new global::GraphQlDiplom.State.ClientData(typename, firstName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), lastName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastName")), phoneNumber: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "phoneNumber")), email: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "email")), deposit: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "deposit")));
             }
 
             throw new global::System.NotSupportedException();
@@ -524,15 +1269,208 @@ namespace GraphQlDiplom.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class GetAllOrdersBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllOrdersResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQlDiplom.IGetAllOrdersResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        public GetAllOrdersBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQlDiplom.IGetAllOrdersResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGetAllOrdersResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGetAllOrdersResult Result, GetAllOrdersResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+            }
+
+            return new global::StrawberryShake.OperationResult<IGetAllOrdersResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGetAllOrdersResult, GetAllOrdersResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GetAllOrdersResultInfo(DeserializeIGetAllOrders_ReadOrderArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "readOrder")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.OrderData?>? DeserializeIGetAllOrders_ReadOrderArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var orders = new global::System.Collections.Generic.List<global::GraphQlDiplom.State.OrderData?>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                orders.Add(DeserializeIGetAllOrders_ReadOrder(child));
+            }
+
+            return orders;
+        }
+
+        private global::GraphQlDiplom.State.OrderData? DeserializeIGetAllOrders_ReadOrder(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Order", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQlDiplom.State.OrderData(typename, orderId: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "orderId")), client: DeserializeIGetAllOrders_ReadOrder_Client(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "client")), phoneNumber: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "phoneNumber")), items: DeserializeIGetAllOrders_ReadOrder_ItemsArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "items")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _intParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::GraphQlDiplom.State.ClientData? DeserializeIGetAllOrders_ReadOrder_Client(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Client", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQlDiplom.State.ClientData(typename, firstName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), lastName: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastName")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.ItemData?>? DeserializeIGetAllOrders_ReadOrder_ItemsArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var items = new global::System.Collections.Generic.List<global::GraphQlDiplom.State.ItemData?>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                items.Add(DeserializeIGetAllOrders_ReadOrder_Items(child));
+            }
+
+            return items;
+        }
+
+        private global::GraphQlDiplom.State.ItemData? DeserializeIGetAllOrders_ReadOrder_Items(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Item", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQlDiplom.State.ItemData(typename, product: DeserializeIGetAllOrders_ReadOrder_Items_Product(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "product")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::GraphQlDiplom.State.ProductData? DeserializeIGetAllOrders_ReadOrder_Items_Product(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Product", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQlDiplom.State.ProductData(typename, @from: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "from")), name: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
     public partial class ClientData
     {
-        public ClientData(global::System.String __typename, global::System.String? firstName = default !, global::System.String? lastName = default !, global::System.Int32? phoneNumber = default !, global::System.String? email = default !)
+        public ClientData(global::System.String __typename, global::System.String? firstName = default !, global::System.String? lastName = default !, global::System.Int32? phoneNumber = default !, global::System.String? email = default !, global::System.Int32? deposit = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+            Deposit = deposit;
         }
 
         public global::System.String __typename { get; }
@@ -544,6 +1482,62 @@ namespace GraphQlDiplom.State
         public global::System.Int32? PhoneNumber { get; }
 
         public global::System.String? Email { get; }
+
+        public global::System.Int32? Deposit { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class OrderData
+    {
+        public OrderData(global::System.String __typename, global::System.Int32? orderId = default !, global::GraphQlDiplom.State.ClientData? client = default !, global::System.Int32? phoneNumber = default !, global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.ItemData?>? items = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            OrderId = orderId;
+            Client = client;
+            PhoneNumber = phoneNumber;
+            Items = items;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.Int32? OrderId { get; }
+
+        public global::GraphQlDiplom.State.ClientData? Client { get; }
+
+        public global::System.Int32? PhoneNumber { get; }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQlDiplom.State.ItemData?>? Items { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class ItemData
+    {
+        public ItemData(global::System.String __typename, global::GraphQlDiplom.State.ProductData? product = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Product = product;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::GraphQlDiplom.State.ProductData? Product { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
+    public partial class ProductData
+    {
+        public ProductData(global::System.String __typename, global::System.DateTimeOffset? @from = default !, global::System.String? name = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            From = @from;
+            Name = name;
+        }
+
+        public global::System.String __typename { get; }
+
+        public global::System.DateTimeOffset? From { get; }
+
+        public global::System.String? Name { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.0.0")]
@@ -595,6 +1589,7 @@ namespace Microsoft.Extensions.DependencyInjection
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::GraphQlDiplom.State.GraphqlClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GetAllClientsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GetAllOrdersQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GraphqlClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.IGraphqlClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::GraphQlDiplom.State.GraphqlClientStoreAccessor>("GraphqlClient", services, serviceCollection);
@@ -632,6 +1627,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQlDiplom.IGetAllClientsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllClientsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllClientsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.GetAllClientsQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.IGetAllClientsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GetAllClientsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQlDiplom.IGetAllOrdersResult>, global::GraphQlDiplom.State.GetAllOrdersResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQlDiplom.IGetAllOrdersResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.IGetAllOrdersQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllOrdersResult>, global::GraphQlDiplom.State.GetAllOrdersBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQlDiplom.IGetAllOrdersResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllOrdersResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQlDiplom.IGetAllOrdersResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.GetAllOrdersQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.IGetAllOrdersQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GetAllOrdersQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::GraphQlDiplom.State.GraphqlClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.GraphqlClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQlDiplom.IGraphqlClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQlDiplom.GraphqlClient>(sp));

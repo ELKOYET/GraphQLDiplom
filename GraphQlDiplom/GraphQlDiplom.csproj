@@ -12,6 +12,7 @@
     <None Include="Client\schema.extensions.graphql" />
     <None Include="Client\schema.graphql" />
     <None Include="GetAllClients.graphql" />
+    <None Include="GetAllOrders.graphql" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,16 @@
+﻿query GetAllOrders {
+  readOrder {
+    orderId
+    client {
+      firstName
+      lastName
+    }
+    phoneNumber
+    items {
+      product {
+         from
+        name
+      }
+    }
+  }
+}
